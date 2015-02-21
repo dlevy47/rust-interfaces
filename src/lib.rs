@@ -6,3 +6,5 @@ extern crate nix;
 mod ffi;
 
 pub mod interface;
+
+pub use interface::Interface;
