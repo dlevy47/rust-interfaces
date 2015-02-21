@@ -7,17 +7,20 @@ use nix::sys::socket;
 
 use ffi;
 
+#[derive(PartialEq, Eq, Debug)]
 pub enum Kind {
     Packet,
     Ipv4,
     Ipv6,
 }
 
+#[derive(PartialEq, Eq, Debug)]
 pub enum NextHop {
     Broadcast(net::SocketAddr),
     Destination(net::SocketAddr),
 }
 
+#[derive(Debug)]
 pub struct Interface {
     /// The name of this interface.
     pub name: String,

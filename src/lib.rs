@@ -7,4 +7,4 @@ mod ffi;
 
 pub mod interface;
 
-pub use interface::Interface;
+pub use interface::{Interface, Kind};
