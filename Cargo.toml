@@ -6,3 +6,7 @@ authors = ["dlevy47 <dlevy47>"]
 
 [dependencies.nix]
 git = "https://github.com/carllerche/nix-rust"
+
+[[bin]]
+path = "src/bin/ifaces.rs"
+name = "ifaces"
