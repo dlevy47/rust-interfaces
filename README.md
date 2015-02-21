@@ -4,7 +4,7 @@ This library contains functionality to retrieve network interface information on
 
 ## Example usage
 
-See `src/bin/ifaces.rs`:
+See `src/bin/ifaces.rs` for an example of printing out network interfaces on a machine:
 
 ```rust
 extern crate "rust-ifaces" as ifaces;
