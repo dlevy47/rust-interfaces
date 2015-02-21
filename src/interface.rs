@@ -49,6 +49,7 @@ impl Interface {
             if let Some(iface) = convert_ifaddrs(cur) {
                 ret.push(iface);
             }
+
             //TODO: do something else maybe?
             cur = unsafe { (*cur).ifa_next };
         }
@@ -68,7 +69,7 @@ fn convert_ifaddrs (ifa: *mut ffi::ifaddrs) -> Option<Interface> {
         Err(_) => return None,
     };
 
-    let kind = if ifa.ifa_addr == ptr::null_mut() {
+    let kind = if ifa.ifa_addr != ptr::null_mut() {
         match unsafe { *ifa.ifa_addr }.sa_family as i32 {
             ffi::AF_PACKET => Kind::Packet,
             socket::AF_INET => Kind::Ipv4,
