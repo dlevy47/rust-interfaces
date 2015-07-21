@@ -1,4 +1,4 @@
-extern crate "rust-ifaces" as ifaces;
+extern crate rust_ifaces as ifaces;
 
 fn main () {
     for iface in

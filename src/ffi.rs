@@ -2,6 +2,8 @@ use libc::{c_void, c_char, c_int, c_uint};
 use std::{mem, net, ptr};
 use nix::sys::socket;
 
+use std::net::IpAddr;
+
 // nix doesn't have this const
 pub const AF_PACKET: i32 = 17;
 
@@ -69,12 +71,12 @@ pub fn convert_sockaddr (sa: *mut socket::sockaddr) -> Option<net::SocketAddr> {
             let sa = & unsafe { *sa };
             let (addr, port) = (sa.sin_addr.s_addr, sa.sin_port);
             (
-                net::IpAddr::new_v4(
+                IpAddr::V4(net::Ipv4Addr::new(
                     ((addr & 0x000000FF) >>  0) as u8,
                     ((addr & 0x0000FF00) >>  8) as u8,
                     ((addr & 0x00FF0000) >> 16) as u8,
                     ((addr & 0xFF000000) >> 24) as u8,
-                    ),
+                    )),
                 port
             )
         },
@@ -83,7 +85,7 @@ pub fn convert_sockaddr (sa: *mut socket::sockaddr) -> Option<net::SocketAddr> {
             let sa = & unsafe { *sa };
             let (addr, port) = (sa.sin6_addr.s6_addr, sa.sin6_port);
             (
-                net::IpAddr::new_v6(
+                IpAddr::V6(net::Ipv6Addr::new(
                     addr[0],
                     addr[1],
                     addr[2],
@@ -92,7 +94,7 @@ pub fn convert_sockaddr (sa: *mut socket::sockaddr) -> Option<net::SocketAddr> {
                     addr[5],
                     addr[6],
                     addr[7],
-                    ),
+                    )),
                 port
             )
         },
