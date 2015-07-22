@@ -1,4 +1,4 @@
-#![feature(libc, net, std_misc)]
+#![feature(ip_addr)]
 
 extern crate libc;
 extern crate nix;

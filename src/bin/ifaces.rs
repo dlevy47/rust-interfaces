@@ -1,5 +1,6 @@
-extern crate "rust-ifaces" as ifaces;
+extern crate rust_ifaces as ifaces;
 
+#[cfg(not(test))]
 fn main () {
     for iface in
         ifaces::Interface::get_all().unwrap()
