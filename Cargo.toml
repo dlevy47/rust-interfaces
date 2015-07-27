@@ -1,8 +1,9 @@
 [package]
 
-name = "rust-ifaces"
+name = "ifaces"
 version = "0.0.1"
 authors = ["dlevy47 <dlevy47>"]
+license = "mit"
 
 [dependencies]
 nix = "*"

@@ -1,4 +1,4 @@
-extern crate rust_ifaces as ifaces;
+extern crate ifaces;
 
 #[cfg(not(test))]
 fn main () {
