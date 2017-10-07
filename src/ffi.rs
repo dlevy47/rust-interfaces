@@ -7,7 +7,7 @@ use std::net::IpAddr;
 // nix doesn't have this const
 pub const AF_PACKET: i32 = 17;
 
-#[allow(dead_code)]
+#[allow(dead_code, non_camel_case_types)]
 #[repr(C)]
 pub enum SIOCGIFFLAGS {
     IFF_UP = 0x1,		/* Interface is up.  */
@@ -86,14 +86,14 @@ pub fn convert_sockaddr (sa: *mut socket::sockaddr) -> Option<net::SocketAddr> {
             let (addr, port) = (sa.sin6_addr.s6_addr, sa.sin6_port);
             (
                 IpAddr::V6(net::Ipv6Addr::new(
-                    addr[0],
-                    addr[1],
-                    addr[2],
-                    addr[3],
-                    addr[4],
-                    addr[5],
-                    addr[6],
-                    addr[7],
+                    addr[0] as u16,
+                    addr[1] as u16,
+                    addr[2] as u16,
+                    addr[3] as u16,
+                    addr[4] as u16,
+                    addr[5] as u16,
+                    addr[6] as u16,
+                    addr[7] as u16,
                     )),
                 port
             )
