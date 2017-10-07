@@ -1,5 +1,3 @@
-#![feature(ip_addr)]
-
 extern crate libc;
 extern crate nix;
 

@@ -7,7 +7,7 @@ use std::net::IpAddr;
 // nix doesn't have this const
 pub const AF_PACKET: i32 = 17;
 
-#[allow(dead_code)]
+#[allow(dead_code, non_camel_case_types)]
 #[repr(C)]
 pub enum SIOCGIFFLAGS {
     IFF_UP = 0x1,		/* Interface is up.  */
