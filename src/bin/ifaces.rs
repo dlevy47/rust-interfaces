@@ -2,10 +2,10 @@ extern crate ifaces;
 
 #[cfg(not(test))]
 fn main () {
-    for iface in
-        ifaces::Interface::get_all().unwrap()
-            .into_iter()
-            .filter(|x| x.kind == ifaces::Kind::Packet) {
-                println!("{}", iface.name);
-            }
+    let ifaces = ifaces::Interface::get_all().unwrap()
+                    .into_iter()
+                    .filter(|x| x.kind != ifaces::Kind::Packet);
+    for iface in ifaces {
+        println!("{:?}", iface);
+    }
 }
